@@ -24,7 +24,7 @@ def create_architecture(
 
     model.add(K.layers.Conv1D(
         filters=16,
-        kernel_size=10,
+        kernel_size=8,
         padding='same',
         data_format="channels_last",
         activation='relu',
@@ -36,7 +36,7 @@ def create_architecture(
 
     model.add(K.layers.Conv1D(
         filters=8,
-        kernel_size=10,
+        kernel_size=8,
         padding='same',
         data_format="channels_last",
         activation='relu'))
@@ -47,7 +47,7 @@ def create_architecture(
 
     model.add(K.layers.Conv1D(
         filters=4,
-        kernel_size=10,
+        kernel_size=8,
         padding='same',
         data_format="channels_last",
         activation='relu'))
@@ -58,7 +58,7 @@ def create_architecture(
 
     model.add(K.layers.Conv1D(
         filters=3,
-        kernel_size=10,
+        kernel_size=8,
         padding='same',
         data_format="channels_last",
         activation='relu'))
