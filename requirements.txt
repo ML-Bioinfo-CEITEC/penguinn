@@ -1,0 +1,10 @@
+biopython==1.74
+h5py==2.10.0
+Keras==2.3.1
+Keras-Applications==1.0.8
+Keras-Preprocessing==1.1.2
+numpy==1.17.2
+PyYAML==5.3.1
+scipy==1.4.1
+six==1.14.0
+tensorflow==2.0.0
