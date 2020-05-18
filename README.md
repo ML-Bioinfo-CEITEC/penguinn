@@ -27,6 +27,17 @@ Required:
     * Biopython
     * numpy
 
+### Installing
+Firstly, create a virtual environment.
+```
+python -m venv venv
+```
+Then, activate it and install the necessary libraries.
+```
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 ### Running prediction
 
 Follow the instructions:
@@ -35,6 +46,8 @@ Follow the instructions:
 cd path/to/Penguinn/directory
 #add rights to execute
 chmod +x penguinn.py
+#if you've followed the installation steps above and aren't actively sourcing from the previously created virtualenv
+source venv/bin/activate
 #run the prediction
 ./penguinn.py --input <input_fasta_file> --output <output_file> --model <path_to_model.h5>
 ```
