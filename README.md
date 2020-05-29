@@ -56,6 +56,7 @@ Default model is set to model trained on dataset with positive:negative samples 
 
 ### TensorFlowJS version
 
-PENGUINN model has been converted from Keras to TFjs and is available as a simple web app: (source code available in [gh-pages](https://github.com/ML-Bioinfo-CEITEC/penguinn/tree/gh-pages) branch of this repo)
+PENGUINN model has been converted from Keras to TFjs and is available as a simple web app: 
 
-https://ml-bioinfo-ceitec.github.io/penguinn/
+https://ml-bioinfo-ceitec.github.io/penguinn/  
+(source code available in [gh-pages](https://github.com/ML-Bioinfo-CEITEC/penguinn/tree/gh-pages) branch of this repo)
