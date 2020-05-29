@@ -1,12 +1,9 @@
-# penguinn_js
+# Penguinn JS
 
-My first TensorflowJS app. The input is 200bp string of letters A, C, T and G. The output is a probability of G4 complex. The model was developed by my colleagues.
+This is the JavaScipt version of PENGUINN model served by TensorFlow JS. The input is 20-200bp string of letters A, C, T, G and N. The output is a probability of G4 complex. 
 
 **Web page**:  
-http://simecek.xyz/penguinn_js/
+https://ml-bioinfo-ceitec.github.io/penguinn/
 
 **Code pen**:  
 https://codepen.io/simecek42/pen/RwWqBvX
-
-**Penguin repo**: (currently private)  
-https://gitlab.com/RBP_Bioinformatics/penguinn

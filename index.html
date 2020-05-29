@@ -1,12 +1,30 @@
-<HTML>
-    <HEAD>
-      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
-      <script src="index.js"></script>
-    </HEAD>
-    <BODY>
-      <h1> Penguinn JS</h1>
-      <div><textarea name="text1" id=text1 style="width:90%;height:150px;" placeholder="Copy here your DNA sequence"></textarea></div>
-   <div><button type="button" onclick="makePrediction()">Predict</button></div>
-  <div class = "prob", id = "prob2"></div>
-    </BODY>
-  </HTML>
+<!DOCTYPE html>
+<HTML lang="en">
+  <HEAD>
+    <TITLE>Penguinn JS</TITLE>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap.min.css">  <!-- https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css -->
+    <script src="lib/tf.min.js"></script>  <!-- https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js -->
+    <script src="lib/biojs-io-fasta@latest.js"></script>  <!-- http://wzrd.in/bundle/biojs-io-fasta@latest -->
+    <script src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </HEAD>
+  <BODY>
+    <H1>Penguinn JS</H1>
+    <FORM>
+      <LABEL class="radio-inline">
+        <INPUT type="radio" name="optradio" id="opt_single" checked>Single sequence
+        </LABEL>
+      <LABEL class="radio-inline">
+        <INPUT type="radio" name="optradio" id="opt_fasta">Multiple sequences (FASTA)
+        </LABEL>
+      <LABEL class="radio-inline">
+        <INPUT type="radio" name="optradio" id="opt_multiline">Multiple sequences (line separated)
+        </LABEL>
+    </FORM>
+    <DIV><TEXTAREA name="text1" id=text1 style="width:90%;height:150px;" placeholder="Copy here your DNA sequence(s)"></TEXTAREA></DIV>
+    <DIV><BUTTON type="button" onclick="makePrediction()">Predict</BUTTON></DIV><BR/>
+    <DIV class = "prob", id = "prob2">For more info about Penguinn, see <A href="https://github.com/ML-Bioinfo-CEITEC/penguinn" target="_blank" rel="noopener noreferrer">https://github.com/ML-Bioinfo-CEITEC/penguinn</A>.</DIV>
+  </BODY>
+</HTML>
