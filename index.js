@@ -43,6 +43,9 @@ function formatOutput(sequence, results, error=0, seq_name='') {
   result = getAverage(results).toFixed(3);
   stdev = getStandardDeviation(results);
   twoerr = (2 * stdev / Math.sqrt(results.length - 1)).toFixed(3);
+  if (twoerr < 0.001) {
+    twoerr = '<0.001'
+  }
 
   output = output.concat(sequence.replace(/(.{50})/g,"$1<br/>"), "</seqtext>");
   if (error) {
