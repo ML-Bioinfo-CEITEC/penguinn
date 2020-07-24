@@ -19,21 +19,41 @@ function validateSequence(sequence, minSize=40, maxSize=200) {
   }
 }
 
-function formatOutput(sequence, result, error=0, seq_name='') {
+function getAverage(array){
+  const n = array.length
+  const mean = array.reduce((a, b) => a + b) / n
+  return mean
+}
+
+// copied from https://stackoverflow.com/a/53577159
+function getStandardDeviation(array) {
+  const n = array.length
+  const mean = array.reduce((a, b) => a + b) / n
+  return Math.sqrt(array.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n)
+}
+
+function formatOutput(sequence, results, error=0, seq_name='') {
+  console.log("formatting output..." + error);
+
   var output = "<br/><b>Input:</b><seqtext>";
   if (seq_name!='') {
     output = output.concat(">", seq_name, "<br/>");
   }
+
+  result = getAverage(results).toFixed(3);
+  stdev = getStandardDeviation(results);
+  twoerr = (2 * stdev / Math.sqrt(results.length - 1)).toFixed(3);
+
   output = output.concat(sequence.replace(/(.{50})/g,"$1<br/>"), "</seqtext>");
   if (error) {
     output = output.concat("<b>Error:</b><br/><br/>", result, '<br/><br/><br/>');
   } else {
     if (result > 0.85) {
-      output = output.concat("<b>Output:</b><br/><br/>Probability of G4 complex =   ", result, ', higher than PENGUINN Precise score threshold.<br/><br/><br/>');
+      output = output.concat("<b>Output:</b><br/><br/>Probability of G4 complex =   ", result, ' (±', twoerr,'), higher than PENGUINN Precise score threshold.<br/><br/><br/>');
     } else if (result > 0.5) {
-      output = output.concat("<b>Output:</b><br/><br/>Probability of G4 complex =   ", result, ', higher than PENGUINN Sensitive score threshold.<br/><br/><br/>');
+      output = output.concat("<b>Output:</b><br/><br/>Probability of G4 complex =   ", result, ' (±', twoerr,'), higher than PENGUINN Sensitive score threshold.<br/><br/><br/>');
     } else {
-      output = output.concat("<b>Output:</b><br/><br/>Probability of G4 complex =   ", result, ', sequence does not pass PENGUINN threshold.<br/><br/><br/>');
+      output = output.concat("<b>Output:</b><br/><br/>Probability of G4 complex =   ", result, ' (±', twoerr,'), sequence does not pass PENGUINN threshold.<br/><br/><br/>');
     }  
   }
 
@@ -93,19 +113,23 @@ async function makePrediction() {
       continue;
     }
     var s2 = s;
-    if (s.length < 200) {
-      s2 = prolongSequence(s, 200);
-    }  
+
+    const Ntries = 100; // number of tries 
+    var results = [];
+    for (j=0; j<Ntries; j++) {
+      if (s.length < 200) {
+        s2 = prolongSequence(s, 200);
+      }  
   
-    // from string to one-hot array
-    const a = oneHot(s2);
+      // from string to one-hot array
+      var a = oneHot(s2);
   
-    // inference
-    const result = model.predict(a).asScalar().dataSync();
-    console.log("prediction done...");
-  
+      // inference
+      results.push(parseFloat(model.predict(a).asScalar().dataSync()));
+    }
+
     // output
-    prob.innerHTML += formatOutput(s, result, 0, seqArray[i].name);
+    prob.innerHTML += formatOutput(s, results, 0, seqArray[i].name);
   }  
   
 }
