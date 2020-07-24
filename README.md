@@ -15,6 +15,11 @@ or
 git clone git@github.com:ML-Bioinfo-CEITEC/penguinn.git
 ```
 
+## Paper
+
+Preprint available at  
+https://www.biorxiv.org/content/10.1101/2020.06.02.129072v1
+
 ### Prerequisities
 
 Penguinn is implemented in python using Keras and Tensorflow backend.
@@ -54,9 +59,13 @@ source venv/bin/activate
 
 Default model is set to model trained on dataset with positive:negative samples ratio 1:1, as described in our paper.
 
-### TensorFlowJS version
+## TensorFlowJS version
 
 PENGUINN model has been converted from Keras to TFjs and is available as a simple web app: 
 
 https://ml-bioinfo-ceitec.github.io/penguinn/  
 (source code available in [gh-pages](https://github.com/ML-Bioinfo-CEITEC/penguinn/tree/gh-pages) branch of this repo)
+
+## Contact
+
+For troubleshooting, to report bugs and other questions, contact, please, [Panagiotis Alexiou](https://www.ceitec.eu/panagiotis-alexiou-ph-d/u91502).
