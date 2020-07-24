@@ -12,8 +12,8 @@ function validateSequence(sequence, minSize=40, maxSize=200) {
     return 'The sequence is too long. The sequence needs to be shorter or equal to '.concat(maxSize, '.');
   } else if (sequence.length < minSize) {
     return 'The sequence is too short. The sequence needs to be longer or equal to '.concat(minSize, '.');
-  } else if ('' != sequence.replace(/A/g,'').replace(/T/g,'').replace(/U/g,'').replace(/C/g,'').replace(/G/g,'').replace(/N/g,'')) {
-    return 'The sequence must consist only of "A", "C", "T", "G", "U" and "N" characters.';
+  } else if ('' != sequence.replace(/A/g,'').replace(/T/g,'').replace(/C/g,'').replace(/G/g,'').replace(/N/g,'')) {
+    return 'The sequence must consist only of "A", "C", "T", "G" and "N" characters.';
   } else {
     return '';
   }
@@ -65,7 +65,7 @@ function formatOutput(sequence, results, error=0, seq_name='') {
 
 function oneHot(s200) {
   // one-hot encoding
-  const t = s200.replace(/A/g,'0').replace(/T/g,'1').replace(/U/g,'1').replace(/C/g,'2').replace(/G/g,'3').replace(/N/g,'9')
+  const t = s200.replace(/A/g,'0').replace(/T/g,'1').replace(/C/g,'2').replace(/G/g,'3').replace(/N/g,'9')
   const y = tf.oneHot(tf.tensor1d(t.split(''),'int32'),4);
   return y.reshape([1,200,4]);
 }
