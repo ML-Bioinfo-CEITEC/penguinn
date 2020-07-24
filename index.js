@@ -7,7 +7,7 @@ function prolongSequence(sequence, size) {
   return leftNs.concat(sequence, rightNs);
 }
 
-function validateSequence(sequence, minSize=40, maxSize=200) {
+function validateSequence(sequence, minSize=20, maxSize=200) {
   if (sequence.length > maxSize) {
     return 'The sequence is too long. The sequence needs to be shorter or equal to '.concat(maxSize, '.');
   } else if (sequence.length < minSize) {
@@ -109,7 +109,7 @@ async function makePrediction() {
     var s = seqArray[i].seq.toUpperCase();
     
     // check the sequence format
-    const validation = validateSequence(s, 40, 200)
+    const validation = validateSequence(s, 20, 200)
     if (validation != '') {
       console.log("wrong input...");
       prob.innerHTML += formatOutput(s, validation, 1, seqArray[i].name);
