@@ -74,6 +74,24 @@ function simpleSeq(x) {
   return {name: '', seq: x};
 }
 
+function setTextArea(text='') {
+  var ta = document.getElementById('text1');
+  ta.value = '';
+  ta.placeholder = text;
+}
+
+function checkedSingle(){
+  setTextArea("Copy your DNA sequence here (20 - 200bp sequence consisting of A, C, G, T and N characters).\n\nExample:\nGGAAGACCCAATCGGACCGGGAGGTCCGGGGAGACGTGTCGGGGATCGGG");
+}
+
+function checkedFasta(){
+  setTextArea("Copy your FASTA formatted DNA sequences here.\n\nExample:\n>Seq1\nGGAAGACCCAATCGGACCGGGAGGTCCGGGGAGACGTGTCGGGGATCGGG\n>Seq2\nTGTCAGAAACTTATATTGGGTGATTTCATTTTTAAAAGTAACCAAAGTGAAAAAT");
+}
+
+function checkedMultiline(){
+  setTextArea("Copy your DNA sequences here (each on a separate line).\n\nExample:\nGGAAGACCCAATCGGACCGGGAGGTCCGGGGAGACGTGTCGGGGATCGGG\nTGTCAGAAACTTATATTGGGTGATTTCATTTTTAAAAGTAACCAAAGTGAAAAAT");
+}
+
 async function makePrediction() {
   
   // get HTML elements

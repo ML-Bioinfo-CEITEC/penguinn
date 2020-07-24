@@ -14,16 +14,20 @@
     <H1>Penguinn JS</H1>
     <FORM>
       <LABEL class="radio-inline">
-        <INPUT type="radio" name="optradio" id="opt_single" checked>Single sequence
+        <INPUT type="radio" name="optradio" id="opt_single" onclick="checkedSingle();" checked>Single sequence
         </LABEL>
       <LABEL class="radio-inline">
-        <INPUT type="radio" name="optradio" id="opt_fasta">Multiple sequences (FASTA)
+        <INPUT type="radio" name="optradio" id="opt_fasta" onclick="checkedFasta();">Multiple sequences (FASTA)
         </LABEL>
       <LABEL class="radio-inline">
-        <INPUT type="radio" name="optradio" id="opt_multiline">Multiple sequences (line separated)
+        <INPUT type="radio" name="optradio" id="opt_multiline" onclick="checkedMultiline();">Multiple sequences (line separated)
         </LABEL>
     </FORM>
-    <DIV><TEXTAREA name="text1" id=text1 style="width:90%;height:150px;" placeholder="Copy here your DNA sequence(s)"></TEXTAREA></DIV>
+    <DIV><TEXTAREA name="text1" id="text1" style="width:90%;height:150px;" 
+      placeholder="Copy your DNA sequence here (20 - 200bp sequence consisting of A, C, G, T and N characters). 
+
+Example: 
+GGAAGACCCAATCGGACCGGGAGGTCCGGGGAGACGTGTCGGGGATCGGG"></TEXTAREA></DIV>
     <DIV><BUTTON type="button" onclick="makePrediction()">Predict</BUTTON></DIV><BR/>
     <DIV class = "prob", id = "prob2">For more info about Penguinn and contact to its developers, see <A href="https://github.com/ML-Bioinfo-CEITEC/penguinn" target="_blank" rel="noopener noreferrer">https://github.com/ML-Bioinfo-CEITEC/penguinn</A>.</DIV>
   </BODY>
