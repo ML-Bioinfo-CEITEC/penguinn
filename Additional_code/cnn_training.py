@@ -97,7 +97,6 @@ def sequence_to_ohe(
         channel={
             'A': 0,
             'T': 1,
-            'U': 1,
             'C': 2,
             'G': 3
         }
@@ -239,7 +238,7 @@ def main():
         X_train,
         y_train,
         batch_size=32,
-        epochs=25,
+        epochs=15,
         validation_split=0.2
     )
 
