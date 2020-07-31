@@ -40,17 +40,18 @@ function formatOutput(sequence, results, error=0, seq_name='') {
     output = output.concat(">", seq_name, "<br/>");
   }
 
-  result = getAverage(results).toFixed(3);
-  stdev = getStandardDeviation(results);
-  twoerr = (2 * stdev / Math.sqrt(results.length - 1)).toFixed(3);
-  if (twoerr < 0.001) {
-    twoerr = '<0.001'
-  }
-
   output = output.concat(sequence.replace(/(.{50})/g,"$1<br/>"), "</seqtext>");
   if (error) {
-    output = output.concat("<b>Error:</b><br/><br/>", result, '<br/><br/><br/>');
+    output = output.concat("<b>Error:</b><br/><br/>", results, '<br/><br/><br/>');
   } else {
+
+    result = getAverage(results).toFixed(3);
+    stdev = getStandardDeviation(results);
+    twoerr = (2 * stdev / Math.sqrt(results.length - 1)).toFixed(3);
+    if (twoerr < 0.001) {
+      twoerr = '<0.001'
+    }
+
     if (result > 0.85) {
       output = output.concat("<b>Output:</b><br/><br/>Probability of G4 complex =   ", result, ' (±', twoerr,'), higher than PENGUINN Precise score threshold.<br/><br/><br/>');
     } else if (result > 0.5) {
