@@ -32,7 +32,7 @@ function getStandardDeviation(array) {
   return Math.sqrt(array.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n)
 }
 
-function formatOutput(sequence, results, error=0, seq_name='') {
+function formatText(sequence, results, error=0, seq_name='') {
   console.log("formatting output..." + error);
 
   var output = "<br/><b>Input:</b><seqtext>";
@@ -63,6 +63,36 @@ function formatOutput(sequence, results, error=0, seq_name='') {
 
   return output
 }
+
+function formatTable(sequence, results, error=0, seq_name='') {
+  console.log("formatting output as CSV..." + error);
+
+  var output = "";
+  if (seq_name!='') {
+    output = output.concat(seq_name, ", ");
+  }
+
+  output = output.concat(sequence, ", ");
+  if (error) {
+    output = output.concat("NA, NA");
+  } else {
+    result = getAverage(results).toFixed(6);
+    stdev = getStandardDeviation(results);
+    twoerr = (2 * stdev / Math.sqrt(results.length - 1)).toFixed(6);
+    output = output.concat(result, ', ', twoerr);
+  }
+  output = output.concat("<br/>");
+
+  return output
+};
+
+function formatOutput(sequence, results, error=0, seq_name='', output_type='text') {
+  if (output_type=='text') {
+    return formatText(sequence, results, error, seq_name) 
+  } else {
+    return formatTable(sequence, results, error, seq_name) 
+  }
+};
 
 function oneHot(s200) {
   // one-hot encoding
@@ -121,6 +151,18 @@ async function makePrediction() {
   if(document.getElementById('opt_multiline').checked) {
     seqArray = txt.split(/\r?\n/).map(simpleSeq);
   }
+
+  if(document.getElementById('opt_tabularoutput').checked) {
+    var output_type="tabular";
+    if(document.getElementById('opt_fasta').checked) {
+      prob.innerHTML += '<b>Name, </b>'
+    }
+    prob.innerHTML += '<b>Sequence, G4_Probability, Twice_SE</b><br />';
+  }
+  if(document.getElementById('opt_textoutput').checked) {
+    var output_type="text";
+  }
+  
   
   // process the array of sequences
   for (var i = 0; i < seqArray.length; i++) {  
@@ -131,7 +173,7 @@ async function makePrediction() {
     const validation = validateSequence(s, 20, 200)
     if (validation != '') {
       console.log("wrong input...");
-      prob.innerHTML += formatOutput(s, validation, 1, seqArray[i].name);
+      prob.innerHTML += formatOutput(s, validation, 1, seqArray[i].name, output_type);
       continue;
     }
     var s2 = s;
@@ -151,7 +193,7 @@ async function makePrediction() {
     }
 
     // output
-    prob.innerHTML += formatOutput(s, results, 0, seqArray[i].name);
+    prob.innerHTML += formatOutput(s, results, 0, seqArray[i].name, output_type);
   }  
   
 }
