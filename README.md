@@ -7,18 +7,13 @@ PENGUINN (Precise Exploration of Nuclear G-quadruplexes Using Interpretable Neur
 Using Git:
 
 ```
-git clone https://github.com/ML-Bioinfo-CEITEC/penguinn.git
+git clone https://gitlab.com/RBP_Bioinformatics/penguinn.git
 ```
 or
 
 ```
-git clone git@github.com:ML-Bioinfo-CEITEC/penguinn.git
+git clone git@gitlab.com:RBP_Bioinformatics/penguinn.git
 ```
-
-## Paper
-
-Preprint available at  
-https://www.biorxiv.org/content/10.1101/2020.06.02.129072v1
 
 ### Prerequisities
 
@@ -57,15 +52,5 @@ source venv/bin/activate
 ./penguinn.py --input <input_fasta_file> --output <output_file> --model <path_to_model.h5>
 ```
 
-Default model is set to model trained on dataset with positive:negative samples ratio 1:1, as described in our paper.
+Default model is set to model trained on human dataset with positive:negative samples ratio 1:1, as described in our paper.
 
-## TensorFlowJS version
-
-PENGUINN model has been converted from Keras to TFjs and is available as a simple web app: 
-
-https://ml-bioinfo-ceitec.github.io/penguinn/  
-(source code available in [gh-pages](https://github.com/ML-Bioinfo-CEITEC/penguinn/tree/gh-pages) branch of this repo)
-
-## Contact
-
-For troubleshooting, to report bugs and other questions, contact, please, [Panagiotis Alexiou](https://www.ceitec.eu/panagiotis-alexiou-ph-d/u91502).
