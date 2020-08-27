@@ -54,3 +54,10 @@ source venv/bin/activate
 
 Default model is set to model trained on human dataset with positive:negative samples ratio 1:1, as described in our paper.
 
+### Web application
+
+https://ml-bioinfo-ceitec.github.io/penguinn/
+
+### Contact information
+
+CEITEC MU, RBP Bioinformatics - Panagiotis Alexiou, https://www.ceitec.eu/rbp-bioinformatics-panagiotis-alexiou/rg281
