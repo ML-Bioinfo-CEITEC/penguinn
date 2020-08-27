@@ -88,6 +88,7 @@ def predict_probs(fasta, model, output):
     :param output: output file to write probabilities to
     """
     sequence_max_length = 200
+    sequence_min_length = 20
 
     for sequence in SeqIO.parse(fasta, "fasta"):
         if len(sequence.seq) > sequence_max_length:
@@ -97,7 +98,14 @@ def predict_probs(fasta, model, output):
             print("Skipping")
             continue
         elif len(sequence.seq) < sequence_max_length:
-            sequence.seq = prolong_sequence(sequence.seq, sequence_max_length)
+            if len(sequence.seq) < sequence_min_length:
+                print()
+                print("Sequence", sequence.id, "is too short. Sequence needs to be longer or equal to",
+                      sequence_min_length)
+                print("Skipping")
+                continue
+            else:
+                sequence.seq = prolong_sequence(sequence.seq, sequence_max_length)
 
         prob = model.predict(sequence_to_ohe(sequence.seq))
         write_score(output, sequence.id, prob[0][0])
