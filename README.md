@@ -23,7 +23,7 @@ Required:
 
 * python, recommended version 3.7
     * Keras 2.3.1
-    * tensorflow 2.0.0
+    * tensorflow 2.3.0
     * Biopython
     * numpy
 
