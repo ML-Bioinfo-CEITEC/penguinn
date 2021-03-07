@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, roc_auc_score
 from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import auc, plot_precision_recall_curve
 from matplotlib.pyplot import figure
 
 
@@ -186,6 +187,8 @@ def draw_precision_recall_curve(model, sequences, labels):
     plt.ylabel('Precision')
     plt.legend(loc="lower center")
     plt.title('Precision recall curve')
+    auc_precision_recall = auc(recall, precision)
+    print("AUC-PR:", auc_precision_recall)
     plt.show()
 
 
