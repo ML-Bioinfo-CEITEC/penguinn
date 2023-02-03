@@ -2,6 +2,8 @@
 
 PENGUINN (Precise Exploration of Nuclear G-quadruplexes Using Interpretable Neural Networks) is a machine learning method based on Convolutional Neural Networks, that learns the characteristics of G4 sequences and predicts probability of forming G4s for given sequences.
 
+Have a look at our paper [PENGUINN: Precise Exploration of Nuclear G-Quadruplexes Using Interpretable Neural Networks](https://www.frontiersin.org/articles/10.3389/fgene.2020.568546/full) for more information about our work.
+
 ## Installation
 
 Using Git:
